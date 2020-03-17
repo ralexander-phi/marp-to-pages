@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [ master, test ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    - name: Build & Deploy to GitHub Pages
+      env: 
+        MARP_ARGS: "slides.md -o index.html"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
+        GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
+        BASE_URL: https://alexsci.com/test-marp-action/
+      uses: ralexander-phi/marp-action@scratch
+      
