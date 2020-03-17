@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ dev, test ]
+    branches: [ dev ]
 
 jobs:
   build:
@@ -12,10 +12,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build & Deploy to GitHub Pages
       env: 
-        MARP_ARGS: "slides.md -o output/index.html"
+        MARP_ARGS: "slides.md -o index.html"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_REPOSITORY: ralexander-phi/test-marp-action
+        GITHUB_REPOSITORY: ${{ github.repository }}
         PUBLISH_TO_BRANCH: master
         BASE_URL: https://alexsci.com/test-marp-action/
-      uses: ralexander-phi/marp-action@scratch
+      uses: ralexander-phi/marp-action@master
       
