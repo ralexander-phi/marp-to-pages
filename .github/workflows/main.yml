@@ -15,7 +15,7 @@ jobs:
         MARP_ARGS: "slides.md -o index.html"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_REPOSITORY: ralexander-phi/test-marp-action
-        REMOTE_BRANCH: master
+        PUBLISH_TO_BRANCH: master
         BASE_URL: https://alexsci.com/test-marp-action/
       uses: ralexander-phi/marp-action@scratch
       
