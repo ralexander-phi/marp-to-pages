@@ -2,6 +2,8 @@
 
 Create a [GitHub Pages](https://pages.github.com/) website presentation from a markdown file using [Marp](https://marp.app/)!
 
+This presentation is both a [website](https://alexsci.com/test-marp-action) and a [README.md](https://github.com/ralexander-phi/test-marp-action/blob/dev/README.md).
+
 ---
 
 ## How this works
