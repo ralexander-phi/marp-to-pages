@@ -20,7 +20,7 @@ Presentations as Code!
 
 [Marp](https://marp.app/) lets you create presentation websites (like this!).
 
-[Marp Action](https://alexsci.com/marp-action) lets you automatically deploy your presentation to [GitHub Pages](https://pages.github.com/).
+[Marp Action](https://github.com/ralexander-phi/marp-action) lets you automatically deploy your presentation to [GitHub Pages](https://pages.github.com/).
 
 This presentation is both a [website](https://alexsci.com/test-marp-action) and a [README.md](https://github.com/ralexander-phi/test-marp-action/blob/dev/README.md).
 
