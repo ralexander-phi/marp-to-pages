@@ -30,9 +30,11 @@ Treat your presentation the same way you treat code.
 
 Use git to track changes. Pull requests to collaborate. Deploy to a webpage automatically.
 
+See a bug? Open an issue or pull request!
+
 ## Setup
 
-Want to host your own?
+Want to create your own?
 
 First, create a new repo [from the template repo](https://github.com/ralexander-phi/test-marp-action).
 
@@ -98,8 +100,6 @@ This is a good time to learn more about Marp. Here's some resources:
 ## Publish your slides
 
 When you are ready to share your presentation, commit or merge to `dev` and your GitHub web page will automatically update.
-
-
 
 # 🎉
 <!--
