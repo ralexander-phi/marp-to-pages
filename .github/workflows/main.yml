@@ -16,5 +16,5 @@ jobs:
         GITHUB_REPOSITORY: ${{ github.repository }}
         PUBLISH_TO_BRANCH: master
         BASE_URL: https://alexsci.com/test-marp-action/
-      uses: ralexander-phi/marp-action@test
+      uses: ralexander-phi/marp-action@master
       
