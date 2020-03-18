@@ -101,7 +101,7 @@ It may take a few minutes for GitHub to publish the site and any updates, so be 
 
 ## Create your slides
 
-Edit slides.md with your content.
+Edit README.md with your content.
 
 You can [install and run marp-cli](https://github.com/marp-team/marp-cli/blob/master/README.md) locally to test out the content before publishing.
 
