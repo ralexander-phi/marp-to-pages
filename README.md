@@ -1,28 +1,42 @@
+<!--
+theme: gaia
+class:
+ - invert
+-->
+
+<!--
+_class:
+ - lead
+ - invert
+-->
+
 # Marp Action for GitHub
 
-Create a [GitHub Pages](https://pages.github.com/) website presentation from a markdown file using [Marp](https://marp.app/)!
+Presentations as Code!
+
+---
+
+## What?
+
+[Marp](https://marp.app/) lets you create presentation websites (like this!).
+
+[Marp Action](https://alexsci.com/marp-action) lets you automatically deploy your presentation to [GitHub Pages](https://pages.github.com/).
 
 This presentation is both a [website](https://alexsci.com/test-marp-action) and a [README.md](https://github.com/ralexander-phi/test-marp-action/blob/dev/README.md).
 
 ---
 
-## How this works
+## Why?
 
-Marp is a tool that converts markdown files to presentation files, like PowerPoint PPTX files or HTML presentations.
+Treat your presentation the same way you treat code.
 
-This GitHub Action lets you build a workflow that generates an HTML presentation and publishes it to GitHub Pages.
-
-Edit your presentation as a markdown file, track changes with git, GitHub pull requests, etc.
-
----
-
-## Demo
-
-This website is deployed from a [sample repo](https://github.com/ralexander-phi/test-marp-action) and hosted on GitHub Pages.
+Use git to track changes. Pull requests to collaborate. Deploy to a webpage automatically.
 
 ---
 
 ## Setup
+
+Want to host your own?
 
 First, create a new repo [from the template repo](https://github.com/ralexander-phi/test-marp-action).
 
@@ -30,56 +44,41 @@ First, create a new repo [from the template repo](https://github.com/ralexander-
 
 ---
 
-![](img/create-repo-from-template.png)
-
----
-
 ## Configure GitHub Pages
 
 [Setup publishing](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source).
-You'll need to remember the branch and URL.
+
+Remember the branch and URL shown.
 
 ---
 
 ## Update Workflow
 
-You'll update the workflow file over the next slides. You can do this right in the GitHub web page (click on the pencil icon).
+You'll update the workflow file over the next few slides. You can do this right in the GitHub web page (click on the pencil icon).
 
-![](img/edit-workflow.png)
-
----
-
-## MARP\_ARGS
-
-The default should be fine.
-
-[Learn more about the Marp command line arguements.](https://github.com/marp-team/marp-cli/blob/master/README.md#basic-usage)
+`.github/workflows/main.yml`
 
 ---
 
-## PUBLISH\_TO\_BRANCH
+## `BASE_URL`
 
-You'll edit the markdown files on the `dev` branch.
+Set this to the domain you're using for GitHub Page (from earlier).
 
-The build will publish to the branch you selected ealier for GitHub Pages to use.
-
-Likely `master` or `gh-pages`.
-
-Set that branch here.
+If you add a custom domain later, you'll need to update this.
 
 ---
 
-## BASE\_URL
+## `PUBLISH_TO_BRANCH`
 
-Update this to whatever domain GitHub pages will be using.
+Tell the build which branch you are using for GitHub Pages (you picked this earlier).
 
-If you add a custom domain later, you'll want to update this.
+This is likely either `master` or `gh-pages`. Set `PUBLISH_TO_BRANCH` to the correct branch.
 
 ---
 
 ## Update Workflow
 
-Finish the changes and commit back to the dev branch.
+Commit `.github/workflows/main.yml` back to `dev` branch.
 
 This will kick off a build.
 
@@ -87,7 +86,7 @@ This will kick off a build.
 
 ## Check if the build succeeded
 
-Click on Actions tab and see if the build succeeds.
+Click on Actions tab and see if the build succeeded.
 
 ![](img/click-actions.png)
 
@@ -95,20 +94,44 @@ Click on Actions tab and see if the build succeeds.
 
 ## Load your new web page
 
-It may take a few minutes for GitHub to publish the site and any updates, so be patient.
+Any update to your site will take a few minutes to be visible. Be patient.
 
 ---
 
 ## Create your slides
 
-Edit README.md with your content.
+Finally, start adding your own content.
 
 You can [install and run marp-cli](https://github.com/marp-team/marp-cli/blob/master/README.md) locally to test out the content before publishing.
 
 ---
 
-# 🎉
+## Learn more about Marp
 
-Hope you like it!
+This is a good time to learn more about Marp. Here's some resources:
+
+- [CommonMark](https://commonmark.org/)
+- [Cheat Sheet](https://commonmark.org/help/)
+- [Themes](https://github.com/marp-team/marp-core/tree/master/themes)
+- [CSS Themes](https://marpit.marp.app/theme-css)
+- [Directives](https://marpit.marp.app/directives)
+- [VS Code plugin](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)
+
+---
+
+## Publish your slides
+
+When you are ready to share your presentation, commit or merge to `dev` and your GitHub web page will automatically update.
+
+---
+
+<!--
+_class:
+ - invert
+ - lead
+-->
+
+# 🎉
+Hooray!
 
 
