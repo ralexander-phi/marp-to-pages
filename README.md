@@ -14,7 +14,7 @@ _class:
 
 # Marp Action for GitHub
 
-Presentations as Code!
+Presentations to Webpages: Instantly!
 
 ## What?
 
