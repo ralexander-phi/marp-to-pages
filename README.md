@@ -18,7 +18,7 @@ Presentations to Webpages: Instantly!
 
 ## What?
 
-[Marp](https://marp.app/) lets you create presentation websites (like this!).
+[Marp](https://marp.app/) lets you create slides from markdown (like this!).
 
 [Marp Action](https://github.com/ralexander-phi/marp-action) lets you automatically deploy your presentation to [GitHub Pages](https://pages.github.com/).
 
@@ -99,7 +99,7 @@ This is a good time to learn more about Marp. Here's some resources:
 
 ## Publish your slides
 
-When you are ready to share your presentation, commit or merge to `dev` and your GitHub web page will automatically update.
+When you are ready to share your presentation, commit or merge to `dev` and your content on GitHub Pages will automatically update.
 
 # 🎉
 <!--
