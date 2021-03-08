@@ -97,6 +97,14 @@ This is a good time to learn more about Marp. Here's some resources:
 - [Directives](https://marpit.marp.app/directives)
 - [VS Code plugin](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)
 
+## Example Sites
+
+Known sites using this action are:
+
+- [University of Illinois at Urbana-Champaign's CS 199 Even More Practice](https://cs199emp.netlify.app/) [(code)](https://github.com/harsh183/emp-125)
+
+Send a [pull request](https://github.com/ralexander-phi/test-marp-action) to get your site added.
+
 ## Publish your slides
 
 When you are ready to share your presentation, commit or merge to `dev` and your content on GitHub Pages will automatically update.
