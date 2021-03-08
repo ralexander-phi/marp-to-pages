@@ -62,7 +62,7 @@ If you add a custom domain later, you'll need to update this.
 
 Tell the build which branch you are using for GitHub Pages (you picked this earlier).
 
-This is likely either `master` or `gh-pages`. Set `PUBLISH_TO_BRANCH` to the correct branch.
+This is likely either `main` or `gh-pages`. Set `PUBLISH_TO_BRANCH` to the correct branch.
 
 ## Update Workflow
 
