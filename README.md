@@ -102,6 +102,7 @@ This is a good time to learn more about Marp. Here's some resources:
 Known sites using this action are:
 
 - [University of Illinois at Urbana-Champaign's CS 199 Even More Practice](https://cs199emp.netlify.app/) [(code)](https://github.com/harsh183/emp-125)
+- [Exploring agent based models](https://roiarthurb.github.io/Talk-UMMISCO_06-07-2020/) [(code)](https://github.com/RoiArthurB/Talk-UMMISCO_06-07-2020)
 
 Send a [pull request](https://github.com/ralexander-phi/test-marp-action) to get your site added.
 
