@@ -48,21 +48,22 @@ Remember the branch and URL shown.
 
 ## Update Workflow
 
-You'll update the workflow file over the next few slides. You can do this right in the GitHub web page (click on the pencil icon).
+You'll update the workflow files over the next few slides. You can do this right in the GitHub web page (click on the pencil icon).
 
-`.github/workflows/main.yml`
+## `.github/workflows/main.yml`
 
-## `BASE_URL`
+The `main.yml` workflow publishes your slides to GH Pages. Consider changing the following settings:
 
-Set this to the domain you're using for GitHub Page (from earlier).
+- `BASE_URL`
+  Set this to the domain you're using for GitHub Page (from earlier).
+  If you add a custom domain later, you'll need to update this.
+- `PUBLISH_TO_BRANCH`
+  Tell the build which branch you are using for GitHub Pages (you picked this earlier).
+  This is likely either `main` or `gh-pages`. Set `PUBLISH_TO_BRANCH` to the correct branch.
 
-If you add a custom domain later, you'll need to update this.
+## `.github/workflows/build-preview.yml`
 
-## `PUBLISH_TO_BRANCH`
-
-Tell the build which branch you are using for GitHub Pages (you picked this earlier).
-
-This is likely either `main` or `gh-pages`. Set `PUBLISH_TO_BRANCH` to the correct branch.
+The `build-preview.yml` workflow builds preview slides for all pull requests submitted for the `dev` branch. You do not need to change anything in this workflow.
 
 ## Update Workflow
 
@@ -85,6 +86,8 @@ Any update to your site will take a few minutes to be visible. Be patient.
 Finally, start adding your own content.
 
 You can [install and run marp-cli](https://github.com/marp-team/marp-cli/blob/master/README.md) locally to test out the content before publishing.
+
+Each pull request opened for the `dev` branch will contain an artifact with preview slides in HTML and PDF. For information on how download the artifact, see [Downloading workflow artifacts](https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts) in _GitHub Actions Documentation_.
 
 ## Learn more about Marp
 
@@ -117,5 +120,3 @@ _class:
  - invert
 -->
 ### Hooray!
-
-
