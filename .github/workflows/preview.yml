@@ -11,10 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "Hello ${{ github.event.pull_request }}"
-        echo "Hello ${{ github.event.pull_request.event }}"
-        echo "Hello ${{ github.event.workflow_run }}"
-        echo "Hello ${{ github.event.workflow_run.event }}"
+        echo "Hello ${{ github.event_name }}"
 
   build:
     runs-on: ubuntu-latest
