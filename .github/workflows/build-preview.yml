@@ -19,7 +19,7 @@ jobs:
         run: npm install -g @marp-team/marp-cli@1.4.0
 
       - name: Build HTML slides
-        run: marp README.md
+        run: marp README.md  --allow-local-files
 
       - name: Build PDF slides
         run: marp README.md --pdf --allow-local-files
