@@ -44,7 +44,7 @@ jobs:
       with:
         issue-number: ${{ github.event.pull_request.number }}
         comment-author: 'github-actions[bot]'
-        body-includes: Slides preview for commit
+        body-includes: Presentation preview for commit
 
     - name: Create comment
       if: ${{ github.event_name == 'pull_request' && steps.fc.outputs.comment-id == 0}}
@@ -55,7 +55,7 @@ jobs:
         # TODO: Get a direct link to artifacts
         # See: https://github.com/actions/upload-artifact/issues/50
         body: |
-          💫 Presentation preview for commit ${{ env.GITHUB_SHA_SHORT }} at:
+          🤖 Presentation preview for commit ${{ env.GITHUB_SHA_SHORT }} at:
             https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
     - name: Update comment
@@ -65,6 +65,6 @@ jobs:
         comment-id: ${{ steps.fc.outputs.comment-id }}
         edit-mode: replace
         body: |
-          💫 Presentation preview for commit ${{ env.GITHUB_SHA_SHORT }} at:
+          🤖 Presentation preview for commit ${{ env.GITHUB_SHA_SHORT }} at:
             https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
