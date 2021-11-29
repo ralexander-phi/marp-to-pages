@@ -70,7 +70,7 @@ jobs:
         edit-mode: replace
         body: |
           📝 Slides preview for commit ${{ env.GITHUB_SHA_SHORT }} at:
-            https://github.com/${{ github.repository_owner }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
     - name: Update comment
       if: ${{ github.event_name == 'pull_request' && steps.fc.outputs.comment-id != 0 }}
@@ -80,5 +80,5 @@ jobs:
         edit-mode: replace
         body: |
           📝 Slides preview for commit ${{ env.GITHUB_SHA_SHORT }} at:
-            https://github.com/${{ github.repository_owner }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
