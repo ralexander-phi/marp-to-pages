@@ -1,24 +1,17 @@
-# This is a basic workflow to help you get started with Actions
+name: Build and Deploy
 
-name: CI
-
-# Controls when the action will run. Triggers the workflow on push events for the dev branch
 on:
   workflow_dispatch:
   push:
-    branches: [ dev ]
+    branches:
+      - dev
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so marp-action can access it
-    - uses: actions/checkout@v2
+    - name: Checks-out your repository under $GITHUB_WORKSPACE
+      uses: actions/checkout@v2
 
     - name: Build & Deploy to GitHub Pages
       env: 
@@ -39,4 +32,4 @@ jobs:
       # consider using a tagged release here
       # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsuses
       uses: ralexander-phi/marp-action@master
-      
+  

@@ -1,0 +1,77 @@
+name: Build Preview
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checks-out your repository under $GITHUB_WORKSPACE
+      uses: actions/checkout@v2
+
+    - name: Build the slides
+      env:
+        # You may wish to customize MARP_ARGS
+        # See https://github.com/marp-team/marp-cli#basic-usage for more details
+        # For a multi-page site, try `MARP_ARGS: "-I slides/ --output dist/"`
+        # Check examples for more: https://github.com/ralexander-phi/test-marp-action/blob/dev/README.md#example-sites
+        # But to keep things simple, let's just convert a single README.md into index.html
+        MARP_ARGS: "README.md -o index.html"
+        # We're just going to save the output for the preview
+        DEPLOY: false
+      # consider using a tagged release here
+      # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsuses
+      #uses: ralexander-phi/marp-action@master
+      uses: ralexander-phi/marp-action@deploy_optional
+
+    - name: Get the branch name to append to the resulting artifact name
+      run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
+
+    - name: Save built artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: slides-preview-${{ env.BRANCH_NAME }}
+        path: ./  # Upload source and built slides
+
+    - name: Get GitHub Pages Data
+      uses: actions/github-script@v3
+      id: pages-data
+      with:
+        script: |
+          const result = await github.request('GET /repos/{owner}/{repo}/pages', {
+            owner: context.repo.owner,
+            repo: context.repo.repo
+          })
+          return result.data
+
+    - name: Find Comment
+      if: ${{ contains(github.event.workflow_run.event, 'pull_request') }}
+      uses: peter-evans/find-comment@v1
+      id: fc
+      with:
+        issue-number: ${{ github.event.workflow_run.pull_requests[0].number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: Docs preview for commit
+
+    - name: Create comment
+      if: ${{ contains(github.event.workflow_run.event, 'pull_request') && steps.fc.outputs.comment-id == 0}}
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        issue-number: ${{ github.event.workflow_run.pull_requests[0].number }}
+        edit-mode: replace
+        body: |
+          📝 Docs preview for commit ${{ env.GITHUB_SHA_SHORT }} at: ${{ fromJSON(steps.pages-data.outputs.result).html_url }}${{ env.REF }}/
+
+    - name: Update comment
+      if: ${{ contains(github.event.workflow_run.event, 'pull_request') && steps.fc.outputs.comment-id != 0 }}
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        comment-id: ${{ steps.fc.outputs.comment-id }}
+        edit-mode: replace
+        body: |
+          📝 Docs preview for commit ${{ env.GITHUB_SHA_SHORT }} at: ${{ fromJSON(steps.pages-data.outputs.result).html_url }}${{ env.REF }}/
+
