@@ -37,22 +37,6 @@ jobs:
         name: slides-preview-${{ env.BRANCH_NAME }}
         path: ./  # Upload source and built slides
 
-    - name: Get GitHub Pages Data
-      uses: actions/github-script@v3
-      id: pages-data
-      with:
-        script: |
-          const result = await github.request('GET /repos/{owner}/{repo}/pages', {
-            owner: context.repo.owner,
-            repo: context.repo.repo
-          })
-          return result.data
-
-    - id: result
-      uses: MichaelMelena/list-artifacts@v1
-
-    - run: echo '${{ steps.result.outputs.artifacts }}'
-
     - name: Find Comment
       if: ${{ github.event_name == 'pull_request' }}
       uses: peter-evans/find-comment@v1
@@ -68,6 +52,8 @@ jobs:
       with:
         issue-number: ${{ github.event.pull_request.number }}
         edit-mode: replace
+        # TODO: Get a direct link to artifacts
+        # See: https://github.com/actions/upload-artifact/issues/50
         body: |
           📝 Slides preview for commit ${{ env.GITHUB_SHA_SHORT }} at:
             https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
