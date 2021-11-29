@@ -48,6 +48,13 @@ jobs:
           })
           return result.data
 
+    - name: say_hello:
+      runs-on: ubuntu-latest
+      steps:
+        - run: |
+            echo "Hello ${{ github.event }}!"
+            echo "- in ${{ github.event }}!"
+
     - name: Find Comment
       if: ${{ contains(github.event.workflow_run.event, 'pull_request') }}
       uses: peter-evans/find-comment@v1
