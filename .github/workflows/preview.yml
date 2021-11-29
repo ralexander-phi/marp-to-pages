@@ -55,7 +55,7 @@ jobs:
           return result.data
 
     - name: Find Comment
-      if: ${{ github.event_name == 'pull_request') }}
+      if: ${{ github.event_name == 'pull_request' }}
       uses: peter-evans/find-comment@v1
       id: fc
       with:
@@ -64,7 +64,7 @@ jobs:
         body-includes: Slides preview for commit
 
     - name: Create comment
-      if: ${{ github.event_name == 'pull_request') && steps.fc.outputs.comment-id == 0}}
+      if: ${{ github.event_name == 'pull_request' && steps.fc.outputs.comment-id == 0}}
       uses: peter-evans/create-or-update-comment@v1
       with:
         issue-number: ${{ github.event.pull_request.number }}
@@ -73,7 +73,7 @@ jobs:
           📝 Slides preview for commit ${{ env.GITHUB_SHA_SHORT }} at: ${{ fromJSON(steps.pages-data.outputs.result).html_url }}${{ env.REF }}/
 
     - name: Update comment
-      if: ${{ github.event_name == 'pull_request') && steps.fc.outputs.comment-id != 0 }}
+      if: ${{ github.event_name == 'pull_request' && steps.fc.outputs.comment-id != 0 }}
       uses: peter-evans/create-or-update-comment@v1
       with:
         comment-id: ${{ steps.fc.outputs.comment-id }}
