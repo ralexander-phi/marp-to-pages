@@ -69,7 +69,7 @@ jobs:
         issue-number: ${{ github.event.pull_request.number }}
         edit-mode: replace
         body: |
-          📝 Slides preview for commit ${{ env.GITHUB_SHA_SHORT }} at: https://github.com///actions/runs/${{ env.run_id }}
+          📝 Slides preview for commit ${{ env.GITHUB_SHA_SHORT }} at: https://github.com///actions/runs/${{ github.run_id }}
 
     - name: Update comment
       if: ${{ github.event_name == 'pull_request' && steps.fc.outputs.comment-id != 0 }}
@@ -78,5 +78,5 @@ jobs:
         comment-id: ${{ steps.fc.outputs.comment-id }}
         edit-mode: replace
         body: |
-          📝 Slides preview for commit ${{ env.GITHUB_SHA_SHORT }} at: https://github.com///actions/runs/${{ env.run_id }}
+          📝 Slides preview for commit ${{ env.GITHUB_SHA_SHORT }} at: https://github.com///actions/runs/${{ github.run_id }}
 
