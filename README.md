@@ -26,9 +26,9 @@ This presentation is both a [website](https://alexsci.com/marp-to-pages) and a [
 
 Treat your presentation the same way you treat code.
 
-* Use git to track changes.
-* Pull requests to collaborate.
-* Deploy to a automatically.
+* Use git to track changes
+* Pull requests to collaborate
+* Deploy automatically
 * See a problem? Open an issue!
 
 ## Setup
