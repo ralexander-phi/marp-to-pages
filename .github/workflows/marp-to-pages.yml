@@ -1,0 +1,69 @@
+name: marp-to-pages
+concurrency: marp-to-pages
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+
+      #
+      # Customize these steps based on your needs
+      #
+      
+      - name: Marp Build (README)
+        uses: docker://marpteam/marp-cli:v1.7.0
+        with:
+          args: README.md -o build/index.html
+        env:
+          MARP_USER: root:root
+
+      - name: Marp Build (README.pdf)
+        uses: docker://marpteam/marp-cli:v1.7.0
+        with:
+          args: README.md -o build/README.pdf
+        env:
+          MARP_USER: root:root
+
+      - name: Marp Build (README.pptx)
+        uses: docker://marpteam/marp-cli:v1.7.0
+        with:
+          args: README.md -o build/README.pptx
+        env:
+          MARP_USER: root:root
+
+      - name: Marp Build (docs folder)
+        uses: docker://marpteam/marp-cli:v1.7.0
+        with:
+          args: -I docs/ -o build/docs/
+        env:
+          MARP_USER: root:root
+
+
+      - name: Deploy preview
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./build/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+
+      - name: Deploy production
+        if: ${{ github.event_name == 'push' }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ./build/
+          clean-exclude: pr-preview/
+
