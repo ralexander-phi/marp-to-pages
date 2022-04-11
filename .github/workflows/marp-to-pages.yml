@@ -24,28 +24,28 @@ jobs:
         run: mkdir build && cp -R img build/img
 
       - name: Marp Build (README)
-        uses: docker://marpteam/marp-cli:${{ env.marpVersion }}
+        uses: "docker://marpteam/marp-cli:${{ env.marpVersion }}"
         with:
           args: README.md -o build/index.html
         env:
           MARP_USER: root:root
 
       - name: Marp Build (README.pdf)
-        uses: docker://marpteam/marp-cli:${{ env.marpVersion }}
+        uses: "docker://marpteam/marp-cli:${{ env.marpVersion }}"
         with:
           args: README.md -o build/README.pdf
         env:
           MARP_USER: root:root
 
       - name: Marp Build (README.pptx)
-        uses: docker://marpteam/marp-cli:${{ env.marpVersion }}
+        uses: "docker://marpteam/marp-cli:${{ env.marpVersion }}"
         with:
           args: README.md -o build/README.pptx
         env:
           MARP_USER: root:root
 
       - name: Marp Build (docs folder)
-        uses: docker://marpteam/marp-cli:${{ env.marpVersion }}
+        uses: "docker://marpteam/marp-cli:${{ env.marpVersion }}"
         with:
           args: -I docs/ -o build/docs/
         env:
