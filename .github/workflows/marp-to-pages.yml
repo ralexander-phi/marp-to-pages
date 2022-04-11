@@ -50,9 +50,8 @@ jobs:
         env:
           MARP_USER: root:root
 
-      # Copy images to build folder
-      - name: Marp Build (docs folder)
-        run: cp img build/img
+      - name: Copy images
+        run: cp -R img build/img
 
       - name: Deploy preview
         if: ${{ github.event_name == 'pull_request' }}
