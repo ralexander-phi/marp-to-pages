@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Copy images
-        run: cp -R img build/img
+        run: mkdir build && cp -R img build/img
 
       - name: Marp Build (README)
         uses: docker://marpteam/marp-cli:v1.7.0
