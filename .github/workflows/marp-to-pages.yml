@@ -17,11 +17,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Copy images
+        run: mkdir build && cp -R img build/img
 
-      #
-      # Customize these steps based on your needs
-      #
-      
       - name: Marp Build (README)
         uses: docker://marpteam/marp-cli:v1.7.0
         with:
@@ -49,7 +47,6 @@ jobs:
           args: -I docs/ -o build/docs/
         env:
           MARP_USER: root:root
-
 
       - name: Deploy preview
         if: ${{ github.event_name == 'pull_request' }}
