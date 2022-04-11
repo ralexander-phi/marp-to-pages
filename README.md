@@ -20,7 +20,7 @@ Presentations to Webpages: Instantly!
 
 [Marp](https://marp.app/) lets you create slides from markdown (like this!).
 
-This presentation is both a [website](https://alexsci.com/test-marp-action) and a [README.md](https://github.com/ralexander-phi/test-marp-action/blob/main/README.md).
+This presentation is both a [website](https://alexsci.com/marp-to-pages) and a [README.md](https://github.com/ralexander-phi/marp-to-pages/blob/main/README.md).
 
 ## Why?
 
@@ -34,7 +34,7 @@ See a bug? Open an issue or pull request!
 
 Want to create your own?
 
-First, create a new repo [from the template repo](https://github.com/ralexander-phi/test-marp-action).
+First, create a new repo [from the template repo](https://github.com/ralexander-phi/marp-to-pages).
 
 ![](img/use-template.png)
 
@@ -142,7 +142,7 @@ Known sites using this action are:
 - [University of Illinois at Urbana-Champaign's CS 199 Even More Practice](https://cs199emp.netlify.app/) [(code)](https://github.com/harsh183/emp-125)
 - [Exploring agent based models](https://roiarthurb.github.io/Talk-UMMISCO_06-07-2020/) [(code)](https://github.com/RoiArthurB/Talk-UMMISCO_06-07-2020)
 
-Send a [pull request](https://github.com/ralexander-phi/test-marp-action) to get your site added.
+Send a [pull request](https://github.com/ralexander-phi/marp-to-pages) to get your site added.
 
 ## Publish your slides
 
