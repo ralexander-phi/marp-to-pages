@@ -12,13 +12,13 @@ _class:
  - invert
 -->
 
-# Marp Action for GitHub
+# Deploy Marp to GitHub Pages
 
 Presentations to Webpages: Instantly!
 
 ## What?
 
-[Marp](https://marp.app/) lets you create slides from markdown (like this!).
+[Marp](https://marp.app/) lets you create HTML slides from markdown (like this!).
 
 This presentation is both a [website](https://alexsci.com/marp-to-pages) and a [README.md](https://github.com/ralexander-phi/marp-to-pages/blob/main/README.md).
 
@@ -26,9 +26,10 @@ This presentation is both a [website](https://alexsci.com/marp-to-pages) and a [
 
 Treat your presentation the same way you treat code.
 
-Use git to track changes. Pull requests to collaborate. Deploy to a webpage automatically.
-
-See a bug? Open an issue or pull request!
+* Use git to track changes.
+* Pull requests to collaborate.
+* Deploy to a automatically.
+* See a problem? Open an issue!
 
 ## Setup
 
@@ -40,72 +41,41 @@ First, create a new repo [from the template repo](https://github.com/ralexander-
 
 ## Configure GitHub Pages
 
-[Setup publishing](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source).
+Open your new repo and [setup publishing](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source).
 
-Remember the branch and URL you choose.
+You'll typically use `gh-pages` as the deploy branch.
 
-## Update Workflow
+## Review Build
 
-You'll update the workflow file over the next few slides. You can do this right in the GitHub web page (click on the pencil icon).
-
-`.github/workflows/main.yml`
-
-## `BASE_URL`
-
-Set this to the domain you're using for GitHub Page.
-
-If you add a custom domain later, you'll need to update this.
-
-## `PUBLISH_TO_BRANCH`
-
-Tell the build which branch you are using for GitHub Pages.
-
-This is likely `gh-pages`. Set `PUBLISH_TO_BRANCH` to the correct branch.
-
-## Update Workflow
-
-Commit `.github/workflows/main.yml` back to `main` branch.
-
-This will kick off the workflow.
-
-## Check if the build succeeded
-
-Click on Actions tab and see if the build succeeded.
+Click on Actions tab and see if the build succeeded (it may take some time).
 
 ![](img/click-actions.png)
 
 You should now see the generated files in the `gh-pages` branch.
 
-## Load your new web page
+## View webpage
 
-Any update to your site will take a few minutes to be visible. Be patient.
+Open your deployed webpage to see the content.
 
-## Create your slides
-
-Finally, start adding your own content.
-
-You can [install and run marp-cli](https://github.com/marp-team/marp-cli/blob/master/README.md) locally to test out the content before publishing.
-
-## Pull Request Previews
-
-Push your slides to a new branch and create a pull request.
-
-The workflow is triggered by the Pull Request and will build a preview page.
-
-Click the link to see a preview of the built content.
-
+Out of the box you should see `README.md` as `/index.html` and `/README.pdf`. Slides under `docs/` are also converted.
 
 ## Running locally
 
 Locally you'll run commands like:
 
 ```
-npx @marp-team/marp-cli@latest README.md -o build/README.pdf
+$ marp README.md -o build/README.pdf
+```
+
+or
+
+```
+$ npx @marp-team/marp-cli@latest README.md -o build/README.pdf
 ```
 
 ## As a workflow step
 
-The workflow step equivalent is:
+The workflow runs an equivalent step:
 
 ```
 - name: Marp Build (README.pdf)
@@ -120,9 +90,9 @@ Note the `args` match the previous slide.
 
 ## Customizing the build
 
-Anything in the `build/` folder will be deployed.
+Anything in the `build/` folder will be deployed to GitHub Pages.
 
-You can perform other types of processing steps here as well.
+You can copy extra files or run further processing steps using other tools.
 
 ## Learn more about Marp
 
