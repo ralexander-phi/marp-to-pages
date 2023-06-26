@@ -1,5 +1,6 @@
 name: marp-to-pages
 concurrency: marp-to-pages
+
 on:
   push:
     branches: [ main ]
@@ -12,37 +13,48 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Copy images
-        run: mkdir build && cp -R img build/img
+      - name: Ensure build dir exists
+        run: mkdir -p build
+
+      - name: Copy images directory (if exists)
+        run: if [[ -d img ]]; then cp -R img build/img; fi
 
       - name: Marp Build (README)
-        uses: docker://marpteam/marp-cli:v1.7.0
+        uses: docker://marpteam/marp-cli:v3.0.2
         with:
           args: README.md -o build/index.html
         env:
           MARP_USER: root:root
 
       - name: Marp Build (README.pdf)
-        uses: docker://marpteam/marp-cli:v1.7.0
+        uses: docker://marpteam/marp-cli:v3.0.2
         with:
-          args: README.md -o build/README.pdf
+          args: README.md --allow-local-files -o build/README.pdf
         env:
           MARP_USER: root:root
 
       - name: Marp Build (README.pptx)
-        uses: docker://marpteam/marp-cli:v1.7.0
+        uses: docker://marpteam/marp-cli:v3.0.2
         with:
-          args: README.md -o build/README.pptx
+          args: README.md --allow-local-files -o build/README.pptx
         env:
           MARP_USER: root:root
 
-      - name: Marp Build (docs folder)
-        uses: docker://marpteam/marp-cli:v1.7.0
+      - name: Check if docs folder exists
+        id: docs-folder-exists
+        run: bash -c "[[ -d docs ]] ; echo \"has_docs=\$?\" >> \"$GITHUB_OUTPUT\""
+
+      - name: Marp Build (docs folder, if exists)
+        if: steps.docs-folder-exists.outputs.has_docs == '0'
+        uses: docker://marpteam/marp-cli:v3.0.2
         with:
           args: -I docs/ -o build/docs/
         env:
