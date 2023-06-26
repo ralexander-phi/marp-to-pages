@@ -1,7 +1,6 @@
 name: marp-to-pages
 concurrency: marp-to-pages
 
-
 on:
   push:
     branches: [ main ]
@@ -14,6 +13,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
 
       - name: Checkout code
@@ -61,8 +62,6 @@ jobs:
       - name: Deploy preview
         if: ${{ github.event_name == 'pull_request' }}
         uses: rossjrw/pr-preview-action@v1
-        permissions:
-          contents: write
         with:
           source-dir: ./build/
           preview-branch: gh-pages
@@ -71,8 +70,6 @@ jobs:
       - name: Deploy production
         if: ${{ github.event_name == 'push' }}
         uses: JamesIves/github-pages-deploy-action@v4
-        permissions:
-          contents: write
         with:
           branch: gh-pages
           folder: ./build/
